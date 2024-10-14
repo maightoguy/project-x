@@ -38,7 +38,7 @@ const DetailPage = () => {
       alignItems="center"
       mt={12}
     >
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" flexWrap="wrap" spacing={2}>
         <Box width="350px">
           <Card
             elevation={6}
