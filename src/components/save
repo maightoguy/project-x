@@ -1,0 +1,42 @@
+<Box>
+        <Box width="200px" height="120px">
+          <img src="\Images\img 1.jpg" alt="" />
+        </Box>
+        <Box width="200px" height="120px">
+          <img src="\Images\img 2.jpg" alt="" />
+        </Box>
+        <Box width="200px" height="120px">
+          <img src="\Images\img 3.jpg" alt="" />
+        </Box>
+        <Box width="200px" height="120px">
+          <img src="\Images\img 4.jpg" alt="" />
+        </Box>
+        <Box width="200px" height="120px">
+          <img src="\Images\img 5.jpg" alt="" />
+        </Box>
+        <Box width="200px" height="120px">
+          <img src="\Images\img 6.jpg" alt="" />
+        </Box>
+      </Box>
+
+
+
+      <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={4}>
+        {tileData.map((tile, index) => (
+          <Box
+            key={index}
+            maxWidth="320px"
+            sx={{
+              border: "1px solid lightgrey",
+              padding: "8px",
+              borderRadius: "5px",
+            }}
+          >
+            <Card key={index} elevation={3} width="100%">
+              <CardMedia image={tile.img} height="320px"></CardMedia>
+              <CardContent>{tile.title}</CardContent>
+            </Card>
+          </Box>
+        ))}
+      </Stack>
+    </Stack>
