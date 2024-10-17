@@ -40,3 +40,19 @@
         ))}
       </Stack>
     </Stack>
+
+
+    <TableBody>
+      {tableData.length > 0 && tableData.map((rowData) => (
+        <TableRow key={rowData.id}>
+          <TableCell>{rowData.District}</TableCell>
+          <TableCell>{rowData.PropertyType}</TableCell>
+          {/* ... and so on for other properties in the main object */}
+          {rowData.myArray && rowData.myArray.map((nestedData) => (
+            <TableCell key={nestedData.id || nestedData.uniqueKey}> {/* Use a unique key here */}
+              {nestedData.property1} {/* Access properties within the nested array */}
+            </TableCell>
+          ))}
+        </TableRow>
+      ))}
+    </TableBody>
