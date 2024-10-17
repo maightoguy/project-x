@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const BASE_URL =
-  "http://ec2-13-60-57-3.eu-north-1.compute.amazonaws.com/api/Properties/";
+const BASE_URL = "http://ec2-13-60-57-3.eu-north-1.compute.amazonaws.com/api";
 
 const options = {
   url: BASE_URL,
@@ -10,7 +9,7 @@ const options = {
   mode: "no-cors",
 };
 
-export const fetchFromApi = async () => {
-  const { data } = await axios.get(`${BASE_URL}`, options);
+export const fetchFromApi = async (url) => {
+  const { data } = await axios.get(`${BASE_URL}/${url}`, options);
   return data;
 };

@@ -6,8 +6,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Button,
 } from "@mui/material";
 import { Box, TableCell } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const headingArr = [
@@ -18,10 +20,10 @@ const Home = () => {
     { id: "5", name: "Image Count" },
   ];
 
-  const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState({});
 
   useEffect(() => {
-    fetchFromApi()
+    fetchFromApi(`Properties/`)
       .then((data) => {
         return data;
       })
@@ -30,8 +32,6 @@ const Home = () => {
       })
       .catch((error) => console.error(error));
   }, []);
-
-  tableData && console.log(tableData);
 
   return (
     <Box
@@ -68,6 +68,9 @@ const Home = () => {
                     <TableCell>{data.captureDate}</TableCell>
                     <TableCell>{data.capturedBy}</TableCell>
                     <TableCell>{data.imageCount}</TableCell>
+                    <Button>
+                      <Link to={`/detail/${data.id}`}>Go</Link>
+                    </Button>
                   </TableRow>
                 ))}
             </TableBody>

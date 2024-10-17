@@ -56,3 +56,241 @@
         </TableRow>
       ))}
     </TableBody>
+
+
+
+
+    /*const tileData = [
+    {
+      img: "./Images/img 1.jpg",
+      title: "Img 1",
+    },
+    {
+      img: "./Images/img 2.jpg",
+      title: "Img 2",
+    },
+    {
+      img: "./Images/img 3.jpg",
+      title: "Img 3",
+    },
+    {
+      img: "./Images/img 4.jpg",
+      title: "Img 4",
+    },
+
+    {
+      img: "./Images/img 5.jpg",
+      title: "Img 5",
+    },
+    {
+      img: "./Images/img 6.jpg",
+      title: "Img 6",
+    },
+  ];*/
+
+
+  {data.map((data) => (
+    <Box
+      key={data.id}
+      maxWidth="320px"
+      sx={{
+        border: "1px solid lightgrey",
+        padding: "8px",
+        borderRadius: "5px",
+      }}
+    >
+      <Card key={data.id} elevation={3}>
+        <img
+          src={data.propertyImages.url}
+          alt={data.propertyImages.name}
+        ></img>
+        <CardContent sx={{ m: "-15px 0px -15px 0px" }}>
+          {data.propertyImages.name}
+        </CardContent>
+      </Card>
+    </Box>
+  ))}
+
+
+
+
+
+
+
+  {data && (
+    <Box
+      maxWidth="320px"
+      sx={{
+        border: "1px solid lightgrey",
+        padding: "8px",
+        borderRadius: "5px",
+      }}
+    >
+      <Card elevation={3}>
+        <img
+          src={data.propertyImages.url}
+          alt={data.propertyImages.name}
+        ></img>
+        <CardContent sx={{ m: "-15px 0px -15px 0px" }}>
+          {data.propertyImages.name}
+        </CardContent>
+      </Card>
+    </Box>
+  )}
+
+
+
+
+
+  import React, { useEffect, useState } from "react";
+import { Stack, Typography, Box, Card, CardContent } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { fetchFromApi } from "../utils/fetchFromApi";
+
+const DetailPage = () => {
+  const { dataId } = useParams();
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    fetchFromApi(`Properties/${dataId}`)
+      .then((response) => {
+        return response;
+      })
+      .then((result) => {
+        console.log(result);
+        setData(result.data);
+      })
+      .catch((error) => console.error(error));
+  }, [dataId]);
+
+  return (
+    <Stack
+      direction="column"
+      spacing={4}
+      justifyContent="center"
+      alignItems="center"
+      mt={12}
+    >
+      <Stack direction="row" flexWrap="wrap" spacing={2}>
+        <Box width="350px">
+          <Card
+            elevation={6}
+            sx={{
+              p: "20px 0px 0px 10px",
+              width: "100%",
+              height: "60px",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography
+              nowrap
+              sx={{
+                fontFamily: "Afacad Flux",
+                fontSize: "16px",
+                fontWeight: "bold",
+              }}
+            >
+              FULL ADDRESS
+            </Typography>
+            <Typography
+              nowrap
+              sx={{
+                fontFamily: "Afacad Flux",
+                fontSize: "12px",
+              }}
+            >
+              {data.fullAddress}
+            </Typography>
+          </Card>
+        </Box>
+        <Box width="350px">
+          <Card
+            elevation={6}
+            sx={{
+              p: "20px 0px 0px 10px",
+              width: "100%",
+              height: "60px",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography
+              nowrap
+              sx={{
+                fontFamily: "Afacad Flux",
+                fontSize: "16px",
+                fontWeight: "bold",
+              }}
+            >
+              GPA LOCATION
+            </Typography>
+            <Typography
+              nowrap
+              sx={{
+                fontFamily: "Afacad Flux",
+                fontSize: "12px",
+              }}
+            >
+              {data?.gpsLocation?.latitude}, {data?.gpsLocation?.longitude}
+            </Typography>
+          </Card>
+        </Box>
+        <Box width="350px">
+          <Card
+            elevation={6}
+            sx={{
+              p: "20px 0px 0px 10px",
+              width: "100%",
+              height: "60px",
+              borderRadius: "5px",
+            }}
+          >
+            <Typography
+              nowrap
+              sx={{
+                fontFamily: "Afacad Flux",
+                fontSize: "16px",
+                fontWeight: "bold",
+              }}
+            >
+              OTHER DETAILS
+            </Typography>
+            <Typography
+              nowrap
+              sx={{
+                fontFamily: "Afacad Flux",
+                fontSize: "12px",
+              }}
+            >
+              {data.otherDetails}
+            </Typography>
+          </Card>
+        </Box>
+      </Stack>
+
+      <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={4}>
+        {data && (
+          <Box
+            maxWidth="320px"
+            sx={{
+              border: "1px solid lightgrey",
+              padding: "8px",
+              borderRadius: "5px",
+            }}
+          >
+            <Card elevation={3}>
+              <img
+                src={data.propertyImages.url}
+                alt={data.propertyImages.name}
+              ></img>
+              <CardContent sx={{ m: "-15px 0px -15px 0px" }}>
+                {data.propertyImages.name}
+              </CardContent>
+            </Card>
+          </Box>
+        )}
+      </Stack>
+    </Stack>
+  );
+};
+
+export default DetailPage;
