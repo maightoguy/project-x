@@ -53,7 +53,7 @@ const DetailPage = () => {
               </Typography>
               <Typography
                 nowrap
-                sx={{ fontFamily: "Afacad Flux", fontSize: "12px" }}
+                sx={{ fontFamily: "Afacad Flux", fontSize: "14px" }}
               >
                 {data.fullAddress}
               </Typography>
@@ -81,7 +81,7 @@ const DetailPage = () => {
               </Typography>
               <Typography
                 nowrap
-                sx={{ fontFamily: "Afacad Flux", fontSize: "12px" }}
+                sx={{ fontFamily: "Afacad Flux", fontSize: "14px" }}
               >
                 {data.gpsLocation?.latitude}, {data.gpsLocation?.longitude}
               </Typography>
@@ -109,7 +109,7 @@ const DetailPage = () => {
               </Typography>
               <Typography
                 nowrap
-                sx={{ fontFamily: "Afacad Flux", fontSize: "12px" }}
+                sx={{ fontFamily: "Afacad Flux", fontSize: "14px" }}
               >
                 {data.otherDetails}
                 {data.propertyType}
