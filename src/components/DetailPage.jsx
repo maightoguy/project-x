@@ -25,7 +25,12 @@ const DetailPage = () => {
       mt={12}
     >
       {data && (
-        <Stack direction="row" justifyContent="center" gap={3}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          gap={3}
+          sx={{ flexWrap: { xs: "wrap" } }}
+        >
           <Box width="350px">
             <Card
               elevation={6}

@@ -50,7 +50,7 @@ const Home = () => {
           backgroundColor: "#000",
         }}
       >
-        <TableContainer>
+        <TableContainer style={{ overflowX: "auto" }}>
           <Table>
             <TableHead>
               <TableRow>
